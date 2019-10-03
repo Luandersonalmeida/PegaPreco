@@ -27,8 +27,10 @@ namespace PegaPreco.Shell
         {
             try
             {
-
-                driver = new ChromeDriver();
+                ChromeOptions chromeoptions = new ChromeOptions();
+                chromeoptions.AddArguments("headless");
+                driver = new ChromeDriver(chromeoptions);
+                //driver = new ChromeDriver();
                 driver.Manage().Window.Maximize();
                 driver.Navigate().GoToUrl("https://www.csonline.com.br/Pages/Login/Login.aspx?usid=e3d8ba925adc4d268de8cb8cfc63c6ad");
                 Thread.Sleep(7000);

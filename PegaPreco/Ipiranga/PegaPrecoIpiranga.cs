@@ -15,8 +15,7 @@ namespace PegaPreco.Ipiranga
 
         public PegaPrecoIpiranga()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
+            
         }
 
         [Test]
@@ -29,6 +28,11 @@ namespace PegaPreco.Ipiranga
         {
             try
             {
+                ChromeOptions chromeoptions = new ChromeOptions();
+                chromeoptions.AddArguments("headless");
+                driver = new ChromeDriver(chromeoptions);
+                //driver = new ChromeDriver();
+                driver.Manage().Window.Maximize();
                 driver.Navigate().GoToUrl("https://www.redeipiranga.com.br/wps/portal/redeipiranga/login/!ut/p/a1/04_Sj9CPykssy0xPLMnMz0vMAfGjzOKNAiwtDI1NDL0sgk1MDBzdw5zMg3y8DA1CTIAKIoEKDHAARwNC-sP1o_AqCTSHKsBjRUFuhEGmo6IiALSd4v0!/dl5/d5/L2dBISEvZ0FBIS9nQSEh/");
                 Thread.Sleep(4000);
                 driver.FindElement(By.Id("viewns_Z7_2P981341J8S440AGVB7RLJ1034_:ns_Z7_2P981341J8S440AGVB7RLJ1034_j_id1359681328_510b177e:login")).SendKeys(user);

@@ -27,7 +27,10 @@ namespace PegaPreco.Petrobras
         {
             try
             {
-                driver = new ChromeDriver();
+                ChromeOptions chromeoptions = new ChromeOptions();
+                chromeoptions.AddArguments("headless");
+                driver = new ChromeDriver(chromeoptions);
+                //driver = new ChromeDriver();
                 driver.Manage().Window.Maximize();
                 Thread.Sleep(5000);
                 driver.Navigate().GoToUrl("https://cn.br-petrobras.com.br/login/login.jsf");
